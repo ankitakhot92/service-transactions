@@ -1,0 +1,26 @@
+<!--
+ Copyright (c) 2014, 2019, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Service Transactions (learning)</h1>
+  <oj-chart id="comboChart2"
+                  type="line"
+                  style-defaults.line-type="[[lineTypeValue]]"
+                  style-defaults.marker-displayed="on"
+                  x-axis.title = "Request Time"
+                  y-axis.title = "Count"
+                  legend.title = "Service Type"
+                  legend.title-halign = "start"
+                  series="[[mixedSeriesValue]]"
+                  groups="[[mixedGroupsValue]]"
+                  animation-on-display="auto"
+                  animation-on-data-change="auto"
+                  time-axis-type="mixedFrequency"
+                  orientation="[[orientationValue]]"
+                  legend.rendered="on"
+                  legend.position="bottom"
+                  style-defaults.bar-gap-ratio="0.75"
+                  style="width:50%;height:350px;float: left;;">
+              </oj-chart>
+</div>
