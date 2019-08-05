@@ -35,11 +35,22 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
       console.log(today);
       console.log(past);
 
-      //UTC
+      //UTC or Z time zone
       var now = ((today.toJSON()).slice(0,19)) + 'Z';
       var then = ((past.toJSON()).slice(0,19)) + 'Z';
       console.log(now);
       console.log(then);
+
+      //creating array of past 6 hrs time 
+      var now1 = [];
+      now1[0] = now;
+      for(var i=1;i<6;i++){
+        var past1 = d.setHours(today.getHours()-i);
+        var past = new Date(past1);
+        var then = ((past.toJSON()).slice(0,19)) + 'Z';
+        now1[i] = then;
+      }
+      console.log(now1);
 
       //creating another empty array
       var items1 = [];
@@ -93,6 +104,47 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
           items1 = [];
          
       }
+
+      //if no data to display
+      for(i=0;i<data.length;i++){
+        for(var j=0;j<6;j++){
+
+          //creating an object
+           var objData = {
+           "name": "abc",
+           "items": []
+           }
+           
+           var objData1 = {
+             "x" : "def",
+             "y" : 0
+           }
+           
+           //get data
+   
+           var name = data[i].serviceType;
+           var x = now1[j];
+           var y = 0;
+                  
+           //replace objData1 and push into array 
+
+           objData1.x = x;
+           objData1.y = y;
+           items1.push(objData1);  
+           
+       }
+       //replace objData 
+       objData.name = name;
+       objData.items = items1
+
+       //pushing data into mixedseries array
+       mixedSeries.push(objData);
+
+       //Emptying the array again
+       items1 = [];
+      
+    }
+      console.log(items1);
       console.log(mixedSeries);
 
       this.mixedSeriesValue = ko.observableArray(mixedSeries);
