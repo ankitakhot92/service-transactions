@@ -7,23 +7,29 @@ This Project plots a graph of past 6 hours Service transaction data.
 * Install npm
 
 >Steps
-1. Clone the Project using 
+1. Create a new directory.
+
+2. Open the directory in git bash.
+
+3. Clone the Project using 
 
 ```
-git clone git@github.com:ankitakhot92/service-transactions.git
+git clone https://github.com/ankitakhot92/service-transactions.git
 ```
 
-2. move into project directory and install ojet dependencies
+4. move into project directory.
+
+5. install ojet dependencies
 
 ```
 npm install
 ```
 
-3. build the project
+6. Build the project
 ```
 ojet build
 ```
-4. run the project
+7. Run the project
 ```
 ojet serve
 ```
