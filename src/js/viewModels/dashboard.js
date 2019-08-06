@@ -106,10 +106,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
           items1 = [];
          
       }
-      alert(count1);
+      
       //if no data to display
       if(count1 == 0){
-        alert("1");
         for(i=0;i<data.length;i++){
           for(var j=0;j<6;j++){
   
