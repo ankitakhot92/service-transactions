@@ -57,6 +57,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
      
 
       //filter past 6 hrs data
+      var count1 = 0;
       for(i=0;i<data.length;i++){
            for(var j=0;j<data[i].transactions.length;j++){
 
@@ -79,6 +80,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
 
 
               if(then < dateTime && dateTime < now){
+                count1 += 1;
                 var name = data[i].serviceType;
                 var x = data[i].transactions[j].transactionRequestDateTime;
                 var y = data[i].transactions[j].count;
@@ -104,46 +106,50 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
           items1 = [];
          
       }
-
+      alert(count1);
       //if no data to display
-      for(i=0;i<data.length;i++){
-        for(var j=0;j<6;j++){
-
-          //creating an object
-           var objData = {
-           "name": "abc",
-           "items": []
-           }
-           
-           var objData1 = {
-             "x" : "def",
-             "y" : 0
-           }
-           
-           //get data
-   
-           var name = data[i].serviceType;
-           var x = now1[j];
-           var y = 0;
-                  
-           //replace objData1 and push into array 
-
-           objData1.x = x;
-           objData1.y = y;
-           items1.push(objData1);  
-           
-       }
-       //replace objData 
-       objData.name = name;
-       objData.items = items1
-
-       //pushing data into mixedseries array
-       mixedSeries.push(objData);
-
-       //Emptying the array again
-       items1 = [];
+      if(count1 == 0){
+        alert("1");
+        for(i=0;i<data.length;i++){
+          for(var j=0;j<6;j++){
+  
+            //creating an object
+             var objData = {
+             "name": "abc",
+             "items": []
+             }
+             
+             var objData1 = {
+               "x" : "def",
+               "y" : 0
+             }
+             
+             //get data
+     
+             var name = data[i].serviceType;
+             var x = now1[j];
+             var y = 0;
+                    
+             //replace objData1 and push into array 
+  
+             objData1.x = x;
+             objData1.y = y;
+             items1.push(objData1);  
+             
+         }
+         //replace objData 
+         objData.name = name;
+         objData.items = items1
+  
+         //pushing data into mixedseries array
+         mixedSeries.push(objData);
+  
+         //Emptying the array again
+         items1 = [];
+        
+      }
+      }
       
-    }
       console.log(items1);
       console.log(mixedSeries);
 
