@@ -57,8 +57,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
      
 
       //filter past 6 hrs data
-      var count1 = 0;
       for(i=0;i<data.length;i++){
+        var count1 = 0;
            for(var j=0;j<data[i].transactions.length;j++){
 
               //creating an object
@@ -78,7 +78,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
               var dateTime1 = data[i].transactions[j].transactionRequestDateTime;
               var dateTime = dateTime1.toString();
 
-
+              //filter data
               if(then < dateTime && dateTime < now){
                 count1 += 1;
                 var name = data[i].serviceType;
@@ -93,8 +93,39 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
               items1.push(objData1);
               
               }
+
+            }
               
-          }
+             // if no data to display
+            if(count1 == 0){
+            
+                for(var j=0;j<6;j++){
+        
+                  //creating an object
+                  var objData = {
+                  "name": "abc",
+                  "items": []
+                  }
+                  
+                  var objData1 = {
+                    "x" : "def",
+                    "y" : 0
+                  }
+                  
+                  //get data
+          
+                  var name = data[i].serviceType;
+                  var x = now1[j];
+                  var y = 0;
+                          
+                  //replace objData1 and push into array 
+        
+                  objData1.x = x;
+                  objData1.y = y;
+                  items1.push(objData1);  
+                }
+
+              }
           //replace objData 
           objData.name = name;
           objData.items = items1
@@ -104,50 +135,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'text!data.json', 'ojs/ojchart', 'oj
 
           //Emptying the array again
           items1 = [];
-         
-      }
+        }
       
-      //if no data to display
-      if(count1 == 0){
-        for(i=0;i<data.length;i++){
-          for(var j=0;j<6;j++){
-  
-            //creating an object
-             var objData = {
-             "name": "abc",
-             "items": []
-             }
-             
-             var objData1 = {
-               "x" : "def",
-               "y" : 0
-             }
-             
-             //get data
-     
-             var name = data[i].serviceType;
-             var x = now1[j];
-             var y = 0;
-                    
-             //replace objData1 and push into array 
-  
-             objData1.x = x;
-             objData1.y = y;
-             items1.push(objData1);  
-             
-         }
-         //replace objData 
-         objData.name = name;
-         objData.items = items1
-  
-         //pushing data into mixedseries array
-         mixedSeries.push(objData);
-  
-         //Emptying the array again
-         items1 = [];
-        
-      }
-      }
       
       console.log(items1);
       console.log(mixedSeries);
