@@ -3,7 +3,7 @@ This Project plots a graph of past 6 hours Service transaction data.
 
 > Pre Requisites
 * Install Ojet Toolkit
-* Install VS code
+* Install VS code (any editor will do)
 * Install npm
 
 >Steps
@@ -16,20 +16,26 @@ This Project plots a graph of past 6 hours Service transaction data.
 ```
 git clone https://github.com/ankitakhot92/service-transactions.git
 ```
+4. open the project in VS code using
 
-4. move into project directory.
+```
+code .
+```
 
-5. install ojet dependencies
+
+5. move into projects root directory.
+
+6. Install ojet dependencies
 
 ```
 npm install
 ```
 
-6. Build the project
+7. Build the project
 ```
 ojet build
 ```
-7. Run the project
+8. Run the project
 ```
 ojet serve
 ```
